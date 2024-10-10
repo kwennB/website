@@ -103,14 +103,10 @@ export default function Layout({
               <MainNavigation />
             </div>
           </header>
-          {showMobileNav ? (
-            <div ref={mobileNavRef}>
-              <MobileNav />
-              {children}
-            </div>
-          ) : (
-            <div>{children}</div>
-          )}
+          <div ref={mobileNavRef}>
+            {showMobileNav && <MobileNav />}
+            {children}
+          </div>
           <ScrollButton />
           <Footer />
         </main>
@@ -205,7 +201,7 @@ const MainNavigation = () => {
 
       <MainNavLink
         className='hidden lg:block hover:underline'
-        uri='/implementations'
+        uri='/tools'
         label='Tools'
         isActive={section === 'tools'}
       />
@@ -294,11 +290,7 @@ const MobileNav = () => {
         isActive={section === 'docs'}
       />
 
-      <MainNavLink
-        uri='/implementations'
-        label='Tools'
-        isActive={section === 'tools'}
-      />
+      <MainNavLink uri='/tools' label='Tools' isActive={section === 'tools'} />
       <MainNavLink uri='/blog' label='Blog' isActive={section === 'blog'} />
       <MainNavLink
         uri='/community'
